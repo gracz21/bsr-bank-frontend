@@ -14,3 +14,4 @@ hs_err_pid*
 *.iml
 /target
 /.idea
+src/main/java/pl/poznan/put/bsr/bank/services
