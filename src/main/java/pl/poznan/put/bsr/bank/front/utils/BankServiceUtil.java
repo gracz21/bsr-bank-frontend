@@ -41,4 +41,16 @@ public class BankServiceUtil {
     public static BankServiceUtil getInstance() {
         return instance;
     }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public BankAccountService getBankAccountService() {
+        return bankAccountService;
+    }
+
+    public BankOperationService getBankOperationService() {
+        return bankOperationService;
+    }
 }
