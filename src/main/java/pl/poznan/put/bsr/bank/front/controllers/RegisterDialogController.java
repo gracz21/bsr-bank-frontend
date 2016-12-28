@@ -40,7 +40,7 @@ public class RegisterDialogController {
             Stage stage = (Stage) registerButton.getScene().getWindow();
             stage.close();
         } catch (BankServiceException_Exception | ValidationException_Exception e) {
-            InformationDialogsUtil.showExceptionDiaog(e.getMessage());
+            InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
     }
 

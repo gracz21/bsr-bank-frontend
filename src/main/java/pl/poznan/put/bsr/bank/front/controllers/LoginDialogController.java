@@ -34,7 +34,7 @@ public class LoginDialogController {
             System.out.println(tmp);
             InformationDialogsUtil.showSuccessDialog("Logged in successful");
         } catch (BankServiceException_Exception | ValidationException_Exception e) {
-            InformationDialogsUtil.showExceptionDiaog(e.getMessage());
+            InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
     }
 

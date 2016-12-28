@@ -10,7 +10,7 @@ public abstract class InformationDialogsUtil {
         showAlert(message, "Success", Alert.AlertType.INFORMATION);
     }
 
-    public static void showExceptionDiaog(String message) {
+    public static void showExceptionDialog(String message) {
         showAlert(message, "Warning", Alert.AlertType.WARNING);
     }
 
