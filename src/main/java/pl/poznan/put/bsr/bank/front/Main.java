@@ -6,19 +6,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
+import pl.poznan.put.bsr.bank.front.views.LoginDialogView;
 
 public class Main extends Application {
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         BankServiceUtil.getInstance().initialize();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginDialog.fxml"));
-        primaryStage.setTitle("e-Bank - Login");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        LoginDialogView loginDialog = new LoginDialogView();
+        loginDialog.showAndWait();
+
+        if(BankServiceUtil.getInstance().isAuthorized()) {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/AccountOverview.fxml"));
+            primaryStage.setTitle("e-Bank");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+            Main.primaryStage = primaryStage;
+        }
     }
 
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
     public static void main(String[] args) {
         launch(args);
