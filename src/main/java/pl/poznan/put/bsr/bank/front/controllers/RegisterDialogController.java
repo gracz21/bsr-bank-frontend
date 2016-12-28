@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
+import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.services.BankServiceException_Exception;
 import pl.poznan.put.bsr.bank.services.ValidationException_Exception;
 
@@ -35,8 +36,11 @@ public class RegisterDialogController {
 
         try {
             BankServiceUtil.getInstance().getUserService().register(login, password, firstName, lastName);
+            InformationDialogsUtil.showSuccessDialog("Registered successful");
+            Stage stage = (Stage) registerButton.getScene().getWindow();
+            stage.close();
         } catch (BankServiceException_Exception | ValidationException_Exception e) {
-            e.printStackTrace();
+            InformationDialogsUtil.showExceptionDiaog(e.getMessage());
         }
     }
 

@@ -5,7 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
+import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.front.views.RegisterDialogView;
+import pl.poznan.put.bsr.bank.services.BankServiceException_Exception;
+import pl.poznan.put.bsr.bank.services.ValidationException_Exception;
 
 import java.io.IOException;
 
@@ -29,8 +32,9 @@ public class LoginDialogController {
         try {
             String tmp = BankServiceUtil.getInstance().getUserService().login(login, password);
             System.out.println(tmp);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            InformationDialogsUtil.showSuccessDialog("Logged in successful");
+        } catch (BankServiceException_Exception | ValidationException_Exception e) {
+            InformationDialogsUtil.showExceptionDiaog(e.getMessage());
         }
     }
 
@@ -38,6 +42,5 @@ public class LoginDialogController {
     private void handleRegisterButton() throws IOException {
         RegisterDialogView registerDialogView = new RegisterDialogView();
         registerDialogView.show();
-        System.out.println("Register");
     }
 }
