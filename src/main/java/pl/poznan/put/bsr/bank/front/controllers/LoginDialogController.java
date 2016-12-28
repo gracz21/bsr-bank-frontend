@@ -2,10 +2,10 @@ package pl.poznan.put.bsr.bank.front.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.front.views.RegisterDialogView;
-import pl.poznan.put.bsr.bank.services.UserService;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class LoginDialogController {
     @FXML
     private TextField loginTextField;
     @FXML
-    private TextField passwordTextField;
+    private PasswordField passwordField;
     @FXML
     private Button loginButton;
     @FXML
@@ -25,11 +25,12 @@ public class LoginDialogController {
     @FXML
     private void handleLoginButton() {
         String login = loginTextField.getText();
-        String password = passwordTextField.getText();
+        String password = passwordField.getText();
         try {
-            System.out.println(BankServiceUtil.getInstance().getUserService().login(login, password));
+            String tmp = BankServiceUtil.getInstance().getUserService().login(login, password);
+            System.out.println(tmp);
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -37,6 +38,6 @@ public class LoginDialogController {
     private void handleRegisterButton() throws IOException {
         RegisterDialogView registerDialogView = new RegisterDialogView();
         registerDialogView.show();
-        System.out.printf("Register");
+        System.out.println("Register");
     }
 }
