@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 /**
  * @author Kamil Walkowiak
  */
-public class InformationDialogsUtil {
+public abstract class InformationDialogsUtil {
     public static void showSuccessDialog(String message) {
         showAlert(message, "Success", Alert.AlertType.INFORMATION);
     }
