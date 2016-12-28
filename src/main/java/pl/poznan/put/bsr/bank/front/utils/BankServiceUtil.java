@@ -5,9 +5,15 @@ import pl.poznan.put.bsr.bank.services.BankOperationService;
 import pl.poznan.put.bsr.bank.services.UserService;
 
 import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
+import javax.xml.ws.handler.MessageContext;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Kamil Walkowiak
@@ -17,6 +23,7 @@ public class BankServiceUtil {
     private UserService userService;
     private BankAccountService bankAccountService;
     private BankOperationService bankOperationService;
+    private String sessionId;
 
     private BankServiceUtil() {
     }
@@ -40,6 +47,26 @@ public class BankServiceUtil {
 
     public static BankServiceUtil getInstance() {
         return instance;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+
+        Map<String, List<String>> headers = new HashMap<>();
+        headers.put("Session-Id", Collections.singletonList(sessionId));
+
+        Map<String, Object> requestContext = ((BindingProvider)userService).getRequestContext();
+        requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+
+        requestContext = ((BindingProvider)bankAccountService).getRequestContext();
+        requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+
+        requestContext = ((BindingProvider)bankOperationService).getRequestContext();
+        requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+    }
+
+    public boolean isAuthorized() {
+        return sessionId != null;
     }
 
     public UserService getUserService() {

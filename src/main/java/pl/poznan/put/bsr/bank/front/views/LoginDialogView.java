@@ -28,7 +28,7 @@ public class LoginDialogView {
         stage.setScene(new Scene(root));
     }
 
-    public void show() {
-        stage.show();
+    public void showAndWait() {
+        stage.showAndWait();
     }
 }
