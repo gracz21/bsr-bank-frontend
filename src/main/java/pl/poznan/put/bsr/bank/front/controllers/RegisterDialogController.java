@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.services.BankServiceException_Exception;
 import pl.poznan.put.bsr.bank.services.ValidationException_Exception;
@@ -34,15 +35,14 @@ public class RegisterDialogController {
 
         try {
             BankServiceUtil.getInstance().getUserService().register(login, password, firstName, lastName);
-        } catch (BankServiceException_Exception e) {
-            e.printStackTrace();
-        } catch (ValidationException_Exception e) {
+        } catch (BankServiceException_Exception | ValidationException_Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
     private void handleCancelButton() {
-
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }
