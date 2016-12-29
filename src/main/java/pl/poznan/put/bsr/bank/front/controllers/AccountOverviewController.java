@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
@@ -30,6 +31,12 @@ public class AccountOverviewController {
     private TableColumn<BankAccount, String> nameTableColumn;
     @FXML
     private TableColumn<BankAccount, String> accountNoTableColumn;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label accountNoLabel;
+    @FXML
+    private Label balanceLabel;
 
     public AccountOverviewController() {
         List<BankAccount> response = null;
@@ -44,10 +51,14 @@ public class AccountOverviewController {
 
     @FXML
     private void initialize() {
+        resetAccountDetails();
+
         nameTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         accountNoTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountNo()));
 
         accountsTableView.setItems(bankAccounts);
+        accountsTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showAccountDetails(newValue));
     }
 
     @FXML
@@ -74,5 +85,17 @@ public class AccountOverviewController {
         } catch (AuthException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
+    }
+
+    private void resetAccountDetails() {
+        nameLabel.setText(null);
+        accountNoLabel.setText(null);
+        balanceLabel.setText(null);
+    }
+
+    private void showAccountDetails(BankAccount bankAccount) {
+        nameLabel.setText(bankAccount.getName());
+        accountNoLabel.setText(bankAccount.getAccountNo());
+        balanceLabel.setText(bankAccount.getBalance() + " zł");
     }
 }
