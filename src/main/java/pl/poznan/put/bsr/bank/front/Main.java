@@ -28,6 +28,11 @@ public class Main extends Application {
         }
     }
 
+    @Override
+    public void stop() throws Exception {
+        BankServiceUtil.getInstance().getUserService().logout();
+    }
+
     public static Stage getPrimaryStage() {
         return primaryStage;
     }
