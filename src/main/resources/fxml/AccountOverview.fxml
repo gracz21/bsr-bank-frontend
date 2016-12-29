@@ -87,13 +87,17 @@
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <TableView prefHeight="590.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                  <TableView fx:id="historyTableView" prefHeight="590.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                       <placeholder>
-                          <Label text="No operations history"/>
+                          <Label text="No operations history" />
                       </placeholder>
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="typeTableColumn" prefWidth="75.0" text="Type" />
+                      <TableColumn fx:id="titleTableColumn" prefWidth="75.0" text="Title" />
+                        <TableColumn fx:id="amountTableColumn" prefWidth="75.0" text="Amount" />
+                        <TableColumn fx:id="sourceTableColumn" prefWidth="131.0" text="Source" />
+                        <TableColumn fx:id="targetTableColumn" prefWidth="112.0" text="Target" />
+                        <TableColumn fx:id="balanceAfterTableColumn" prefWidth="142.0" text="Balance after" />
                     </columns>
                   </TableView>
                </children>
