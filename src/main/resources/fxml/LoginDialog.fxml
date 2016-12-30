@@ -42,7 +42,7 @@
       </GridPane>
       <ButtonBar layoutX="286.0" layoutY="151.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="14.0">
         <buttons>
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Login" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Login" defaultButton="true"/>
           <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButton" text="Register" />
         </buttons>
       </ButtonBar>
