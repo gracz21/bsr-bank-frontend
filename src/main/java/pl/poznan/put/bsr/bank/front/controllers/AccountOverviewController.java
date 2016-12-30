@@ -36,6 +36,8 @@ public class AccountOverviewController {
     @FXML
     private Label balanceLabel;
     @FXML
+    private Button countFeeButton;
+    @FXML
     private Button newOperationButton;
     @FXML
     private TableView<BankOperation> historyTableView;
@@ -83,9 +85,21 @@ public class AccountOverviewController {
     }
 
     @FXML
+    private void handleCountFeeButton() {
+        BankAccount selectedBankAccount = accountsTableView.getSelectionModel().getSelectedItem();
+        try {
+            BankOperation newOperation = BankServiceUtil.getInstance().getBankOperationService().countFee(10.0, selectedBankAccount.getAccountNo());
+            updateAccountDetails(selectedBankAccount, newOperation);
+        } catch (AuthException_Exception | BankOperationException_Exception | BankServiceException_Exception | ValidationException_Exception e) {
+            InformationDialogsUtil.showExceptionDialog(e.getMessage());
+        }
+    }
+
+    @FXML
     private void handleRefreshButton() {
         resetAccountDetails();
         newOperationButton.setDisable(true);
+
         updateBankAccountsList();
     }
 
@@ -107,11 +121,30 @@ public class AccountOverviewController {
 
         BankOperation newOperation = newBankOperationDialogView.getResult();
         if(newOperation != null) {
-            balanceLabel.setText(newOperation.getBalanceAfter() + " PLN");
-            historyTableView.getItems().add(newOperation);
-            selectedBankAccount.setBalance(newOperation.getBalanceAfter());
-            selectedBankAccount.getHistory().getBankOperationOrPaymentOrTransfer().add(newOperation);
+            updateAccountDetails(selectedBankAccount, newOperation);
         }
+    }
+
+    private void initializeAccountTableView() {
+        nameTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        accountNoTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountNo()));
+
+        accountsTableView.setItems(bankAccounts);
+        accountsTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if(newValue != null) {
+                        showAccountDetails(newValue);
+                    }
+                });
+    }
+
+    private void initializeHistoryTableView() {
+        typeTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
+        titleTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+        amountTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getAmount()));
+        sourceTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareSource(cellData.getValue())));
+        targetTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareTarget(cellData.getValue())));
+        balanceAfterTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getBalanceAfter()));
     }
 
     private void updateBankAccountsList() {
@@ -123,26 +156,27 @@ public class AccountOverviewController {
         }
     }
 
-    private void initializeAccountTableView() {
-        nameTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
-        accountNoTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountNo()));
-
-        accountsTableView.setItems(bankAccounts);
-        accountsTableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                        if(newValue != null) {
-                            showAccountDetails(newValue);
-                        }
-        });
+    private void resetAccountDetails() {
+        nameLabel.setText(null);
+        accountNoLabel.setText(null);
+        balanceLabel.setText(null);
+        historyTableView.setItems(null);
     }
 
-    private void initializeHistoryTableView() {
-        typeTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
-        titleTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        amountTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getAmount()));
-        sourceTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareSource(cellData.getValue())));
-        targetTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareTarget(cellData.getValue())));
-        balanceAfterTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getBalanceAfter()));
+    private void showAccountDetails(BankAccount bankAccount) {
+        newOperationButton.setDisable(false);
+        nameLabel.setText(bankAccount.getName());
+        accountNoLabel.setText(bankAccount.getAccountNo());
+        balanceLabel.setText(bankAccount.getBalance() + " PLN");
+        historyTableView.setItems(FXCollections.observableArrayList(
+                bankAccount.getHistory().getBankOperationOrPaymentOrTransfer()));
+    }
+
+    private void updateAccountDetails(BankAccount bankAccount, BankOperation bankOperation) {
+        balanceLabel.setText(bankOperation.getBalanceAfter() + " PLN");
+        historyTableView.getItems().add(bankOperation);
+        bankAccount.setBalance(bankOperation.getBalanceAfter());
+        bankAccount.getHistory().getBankOperationOrPaymentOrTransfer().add(bankOperation);
     }
 
     private String prepareSource(BankOperation bankOperation) {
@@ -156,6 +190,9 @@ public class AccountOverviewController {
                 break;
             case "Transfer":
                 source = ((Transfer)bankOperation).getSenderAccount();
+                break;
+            case "Fee":
+                source = bankOperation.getReceiverAccount();
                 break;
         }
 
@@ -174,24 +211,11 @@ public class AccountOverviewController {
             case "Transfer":
                 target = bankOperation.getReceiverAccount();
                 break;
+            case "Fee":
+                target = "N/A";
+                break;
         }
 
         return target;
-    }
-
-    private void resetAccountDetails() {
-        nameLabel.setText(null);
-        accountNoLabel.setText(null);
-        balanceLabel.setText(null);
-        historyTableView.setItems(null);
-    }
-
-    private void showAccountDetails(BankAccount bankAccount) {
-        newOperationButton.setDisable(false);
-        nameLabel.setText(bankAccount.getName());
-        accountNoLabel.setText(bankAccount.getAccountNo());
-        balanceLabel.setText(bankAccount.getBalance() + " PLN");
-        historyTableView.setItems(FXCollections.observableArrayList(
-                bankAccount.getHistory().getBankOperationOrPaymentOrTransfer()));
     }
 }

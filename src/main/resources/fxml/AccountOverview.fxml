@@ -69,13 +69,15 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Button fx:id="newOperationButton" mnemonicParsing="false" onAction="#handleNewOperationButton" text="New operation" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Button>
                         <Label fx:id="nameLabel" GridPane.columnIndex="1" />
                         <Label fx:id="accountNoLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="balanceLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <buttons>
+                              <Button fx:id="countFeeButton" mnemonicParsing="false" onAction="#handleCountFeeButton" text="Count fee" />
+                              <Button fx:id="newOperationButton" mnemonicParsing="false" onAction="#handleNewOperationButton" text="New operation" />
+                           </buttons>
+                        </ButtonBar>
                      </children>
                   </GridPane>
                </children>
