@@ -5,10 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.front.views.NewBankOperationDialogView;
@@ -36,6 +33,8 @@ public class AccountOverviewController {
     private Label accountNoLabel;
     @FXML
     private Label balanceLabel;
+    @FXML
+    private Button newOperationButton;
     @FXML
     private TableView<BankOperation> historyTableView;
     @FXML
@@ -67,6 +66,7 @@ public class AccountOverviewController {
         resetAccountDetails();
 
         initializeAccountTableView();
+        newOperationButton.setDisable(true);
         initializeHistoryTableView();
     }
 
@@ -98,8 +98,17 @@ public class AccountOverviewController {
 
     @FXML
     private void handleNewOperationButton() throws java.io.IOException {
-        NewBankOperationDialogView newBankOperationDialogView = new NewBankOperationDialogView();
+        BankAccount selectedBankAccount = accountsTableView.getSelectionModel().getSelectedItem();
+        NewBankOperationDialogView newBankOperationDialogView = new NewBankOperationDialogView(selectedBankAccount.getAccountNo());
         newBankOperationDialogView.showAndWait();
+
+        BankOperation newOperation = newBankOperationDialogView.getResult();
+        if(newOperation != null) {
+            balanceLabel.setText(newOperation.getBalanceAfter() + " PLN");
+            historyTableView.getItems().add(newOperation);
+            selectedBankAccount.setBalance(newOperation.getBalanceAfter());
+            selectedBankAccount.getHistory().getBankOperationOrPaymentOrTransfer().add(newOperation);
+        }
     }
 
     private void initializeAccountTableView() {
@@ -162,9 +171,10 @@ public class AccountOverviewController {
     }
 
     private void showAccountDetails(BankAccount bankAccount) {
+        newOperationButton.setDisable(false);
         nameLabel.setText(bankAccount.getName());
         accountNoLabel.setText(bankAccount.getAccountNo());
-        balanceLabel.setText(bankAccount.getBalance() + " zł");
+        balanceLabel.setText(bankAccount.getBalance() + " PLN");
         historyTableView.setItems(FXCollections.observableArrayList(
                 bankAccount.getHistory().getBankOperationOrPaymentOrTransfer()));
     }

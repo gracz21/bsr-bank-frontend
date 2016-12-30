@@ -46,7 +46,7 @@
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></Label>
-      <ComboBox fx:id="operationTypeComboBox" prefHeight="31.0" prefWidth="300.0" GridPane.columnIndex="1">
+      <ComboBox fx:id="operationTypeComboBox" onAction="#handleOperationTypeComboBox" prefHeight="31.0" prefWidth="300.0" GridPane.columnIndex="1">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Payment" />
@@ -71,15 +71,15 @@
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </TextField>
-      <Label fx:id="sourceAccountNoLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label fx:id="sourceAccountNoLabel" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </Label>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleOkButton" text="OK" />
-            <Button mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+          <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOkButton" text="OK" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
         </buttons>
          <GridPane.margin>
             <Insets right="5.0" />

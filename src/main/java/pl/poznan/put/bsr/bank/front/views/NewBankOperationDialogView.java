@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pl.poznan.put.bsr.bank.front.controllers.NewBankOperationDialogController;
+import pl.poznan.put.bsr.bank.services.BankOperation;
 
 import java.io.IOException;
 
@@ -14,8 +16,9 @@ import java.io.IOException;
  */
 public class NewBankOperationDialogView {
     private Stage stage;
+    private NewBankOperationDialogController controller;
 
-    public NewBankOperationDialogView() throws IOException {
+    public NewBankOperationDialogView(String selectedBankAccountNo) throws IOException {
         stage = new Stage();
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
@@ -26,9 +29,16 @@ public class NewBankOperationDialogView {
         Parent root = fxmlLoader.load();
 
         stage.setScene(new Scene(root));
+
+        this.controller = fxmlLoader.getController();
+        controller.setSelectedBankAccountNo(selectedBankAccountNo);
     }
 
     public void showAndWait() {
         stage.showAndWait();
+    }
+
+    public BankOperation getResult() {
+        return controller.getResultBankOperation();
     }
 }
