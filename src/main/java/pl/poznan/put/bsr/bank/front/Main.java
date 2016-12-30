@@ -30,7 +30,10 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        BankServiceUtil.getInstance().getUserService().logout();
+        BankServiceUtil bankServiceUtil = BankServiceUtil.getInstance();
+        if(bankServiceUtil.isAuthorized()) {
+            bankServiceUtil.getUserService().logout();
+        }
     }
 
     public static Stage getPrimaryStage() {
