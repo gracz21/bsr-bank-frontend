@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
+import pl.poznan.put.bsr.bank.front.views.NewBankOperationDialogView;
 import pl.poznan.put.bsr.bank.services.*;
 
 import java.util.List;
@@ -93,6 +94,12 @@ public class AccountOverviewController {
         } catch (AuthException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
+    }
+
+    @FXML
+    private void handleNewOperationButton() throws java.io.IOException {
+        NewBankOperationDialogView newBankOperationDialogView = new NewBankOperationDialogView();
+        newBankOperationDialogView.showAndWait();
     }
 
     private void initializeAccountTableView() {
