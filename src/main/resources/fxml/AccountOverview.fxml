@@ -29,7 +29,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleAddBankAccountButton" text="Add bank account" ButtonBar.buttonData="LEFT" />
-            <Button mnemonicParsing="false" text="Refresh" />
+            <Button mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" />
             <Button mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
         </buttons>
          <BorderPane.margin>

@@ -1,5 +1,6 @@
 package pl.poznan.put.bsr.bank.front.controllers;
 
+import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.front.views.NewBankOperationDialogView;
 import pl.poznan.put.bsr.bank.services.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,14 +53,8 @@ public class AccountOverviewController {
     private TableColumn<BankOperation, Double> balanceAfterTableColumn;
 
     public AccountOverviewController() {
-        List<BankAccount> response = null;
-        try {
-            response = BankServiceUtil.getInstance().getBankAccountService().getCurrentUserBankAccounts();
-        } catch (AuthException_Exception | BankServiceException_Exception e) {
-            InformationDialogsUtil.showExceptionDialog(e.getMessage());
-        }
-
-        bankAccounts = FXCollections.observableArrayList(response);
+        bankAccounts = new ObservableListWrapper<>(new ArrayList<>());
+        updateBankAccountsList();
     }
 
     @FXML
@@ -87,6 +83,13 @@ public class AccountOverviewController {
     }
 
     @FXML
+    private void handleRefreshButton() {
+        resetAccountDetails();
+        newOperationButton.setDisable(true);
+        updateBankAccountsList();
+    }
+
+    @FXML
     private void handleLogoutButton() {
         try {
             BankServiceUtil.getInstance().getUserService().logout();
@@ -111,13 +114,26 @@ public class AccountOverviewController {
         }
     }
 
+    private void updateBankAccountsList() {
+        try {
+            List<BankAccount> response = BankServiceUtil.getInstance().getBankAccountService().getCurrentUserBankAccounts();
+            bankAccounts.setAll(response);
+        } catch (AuthException_Exception | BankServiceException_Exception e) {
+            InformationDialogsUtil.showExceptionDialog(e.getMessage());
+        }
+    }
+
     private void initializeAccountTableView() {
         nameTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         accountNoTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountNo()));
 
         accountsTableView.setItems(bankAccounts);
         accountsTableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showAccountDetails(newValue));
+                (observable, oldValue, newValue) -> {
+                        if(newValue != null) {
+                            showAccountDetails(newValue);
+                        }
+        });
     }
 
     private void initializeHistoryTableView() {
