@@ -101,6 +101,9 @@
                         <TableColumn fx:id="targetTableColumn" prefWidth="112.0" text="Target" />
                         <TableColumn fx:id="balanceAfterTableColumn" prefWidth="142.0" text="Balance after" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
