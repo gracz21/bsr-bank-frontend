@@ -64,6 +64,7 @@ public class AccountOverviewController {
         resetAccountDetails();
 
         initializeAccountTableView();
+        countFeeButton.setDisable(true);
         newOperationButton.setDisable(true);
         initializeHistoryTableView();
     }
@@ -98,6 +99,7 @@ public class AccountOverviewController {
     @FXML
     private void handleRefreshButton() {
         resetAccountDetails();
+        countFeeButton.setDisable(true);
         newOperationButton.setDisable(true);
 
         updateBankAccountsList();
@@ -164,6 +166,7 @@ public class AccountOverviewController {
     }
 
     private void showAccountDetails(BankAccount bankAccount) {
+        countFeeButton.setDisable(false);
         newOperationButton.setDisable(false);
         nameLabel.setText(bankAccount.getName());
         accountNoLabel.setText(bankAccount.getAccountNo());
