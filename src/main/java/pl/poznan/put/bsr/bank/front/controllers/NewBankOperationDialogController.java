@@ -72,7 +72,7 @@ public class NewBankOperationDialogController {
     private void handleOkButton() {
         BankOperationService bankOperationService = BankServiceUtil.getInstance().getBankOperationService();
         String title = titleTextField.getText();
-        double amount = Double.parseDouble(amountTextField.getText());
+        String amount = amountTextField.getText();
 
         try {
             switch (operationTypeComboBox.getValue()) {

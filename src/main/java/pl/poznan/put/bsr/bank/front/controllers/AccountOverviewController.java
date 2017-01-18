@@ -88,7 +88,7 @@ public class AccountOverviewController {
     private void handleCountFeeButton() {
         BankAccount selectedBankAccount = accountsTableView.getSelectionModel().getSelectedItem();
         try {
-            BankOperation newOperation = BankServiceUtil.getInstance().getBankOperationService().countFee(10.0, selectedBankAccount.getAccountNo());
+            BankOperation newOperation = BankServiceUtil.getInstance().getBankOperationService().countFee(selectedBankAccount.getAccountNo());
             updateAccountDetails(selectedBankAccount, newOperation);
         } catch (AuthException_Exception | BankOperationException_Exception | BankServiceException_Exception | ValidationException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
