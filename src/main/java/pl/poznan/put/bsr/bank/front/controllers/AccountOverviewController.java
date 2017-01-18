@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.front.views.NewBankOperationDialogView;
@@ -23,6 +24,8 @@ import java.util.Optional;
 public class AccountOverviewController {
     private ObservableList<BankAccount> bankAccounts;
 
+    @FXML
+    private Button logoutButton;
     @FXML
     private TableView<BankAccount> accountsTableView;
     @FXML
@@ -110,6 +113,7 @@ public class AccountOverviewController {
         try {
             BankServiceUtil.getInstance().getUserService().logout();
             InformationDialogsUtil.showSuccessDialog("Logged out successfully");
+            ((Stage)logoutButton.getScene().getWindow()).close();
         } catch (AuthException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }

@@ -30,7 +30,7 @@
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleAddBankAccountButton" text="Add bank account" ButtonBar.buttonData="LEFT" />
             <Button mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" />
-            <Button mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
         </buttons>
          <BorderPane.margin>
             <Insets left="5.0" right="5.0" />
