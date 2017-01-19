@@ -10,11 +10,16 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 /**
+ * Login dialog constructing class
  * @author Kamil Walkowiak
  */
 public class LoginDialogView {
     private Stage stage;
 
+    /**
+     * Creates nes login dialog
+     * @throws IOException if layout file was not found
+     */
     public LoginDialogView() throws IOException {
         stage = new Stage();
         stage.initStyle(StageStyle.DECORATED);
@@ -28,6 +33,9 @@ public class LoginDialogView {
         stage.setScene(new Scene(root));
     }
 
+    /**
+     * Shows login dialog and wait for user response
+     */
     public void showAndWait() {
         stage.showAndWait();
     }

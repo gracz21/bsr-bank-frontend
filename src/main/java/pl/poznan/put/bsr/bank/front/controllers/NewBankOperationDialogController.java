@@ -11,6 +11,7 @@ import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.services.*;
 
 /**
+ * New bank operation dialog controller class
  * @author Kamil Walkowiak
  */
 public class NewBankOperationDialogController {

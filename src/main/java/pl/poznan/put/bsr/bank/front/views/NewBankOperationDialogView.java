@@ -12,12 +12,18 @@ import pl.poznan.put.bsr.bank.services.BankOperation;
 import java.io.IOException;
 
 /**
+ * New bank operation dialog constructing class
  * @author Kamil Walkowiak
  */
 public class NewBankOperationDialogView {
     private Stage stage;
     private NewBankOperationDialogController controller;
 
+    /**
+     * Creates new new bank operation dialog
+     * @param selectedBankAccountNo selected bank account no
+     * @throws IOException if layout file was not found
+     */
     public NewBankOperationDialogView(String selectedBankAccountNo) throws IOException {
         stage = new Stage();
         stage.initStyle(StageStyle.DECORATED);
@@ -34,10 +40,17 @@ public class NewBankOperationDialogView {
         controller.setSelectedBankAccountNo(selectedBankAccountNo);
     }
 
+    /**
+     * Shows new bank operation dialog and wait for user response
+     */
     public void showAndWait() {
         stage.showAndWait();
     }
 
+    /**
+     * Return created bank operation
+     * @return created bank operation
+     */
     public BankOperation getResult() {
         return controller.getResultBankOperation();
     }

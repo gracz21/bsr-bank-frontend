@@ -22,6 +22,7 @@ import java.util.Optional;
 
 
 /**
+ * Main screen controller class
  * @author Kamil Walkowiak
  */
 public class AccountOverviewController {
@@ -65,6 +66,9 @@ public class AccountOverviewController {
     @FXML
     private TableColumn<BankOperation, String> dateTableColumn;
 
+    /**
+     * Creates instance of account overview controller
+     */
     public AccountOverviewController() {
         fetchCurrentUser();
         bankAccounts = new ObservableListWrapper<>(new ArrayList<>());

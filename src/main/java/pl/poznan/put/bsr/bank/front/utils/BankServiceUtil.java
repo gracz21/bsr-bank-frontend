@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Util class for communicating with SOAP service
  * @author Kamil Walkowiak
  */
 public class BankServiceUtil {
@@ -25,30 +26,39 @@ public class BankServiceUtil {
     private BankOperationService bankOperationService;
     private String sessionId;
 
-    private BankServiceUtil() {
-    }
-
+    /**
+     * Initialize bank service util object
+     * @throws MalformedURLException if service URL are invalid
+     */
     public void initialize() throws MalformedURLException {
         URL url = new URL(ConstantsUtil.USER_SERVICE_WSDL_URL);
-        QName qName = new QName("http://services.bank.bsr.put.poznan.pl/", "UserServiceService");
+        QName qName = new QName(ConstantsUtil.NAMESPACE, "UserServiceService");
         Service service = Service.create(url, qName);
         userService = service.getPort(UserService.class);
 
         url = new URL(ConstantsUtil.BANK_ACCOUNT_SERVICE_WSDL_URL);
-        qName = new QName("http://services.bank.bsr.put.poznan.pl/", "BankAccountServiceService");
+        qName = new QName(ConstantsUtil.NAMESPACE, "BankAccountServiceService");
         service = Service.create(url, qName);
         bankAccountService = service.getPort(BankAccountService.class);
 
         url = new URL(ConstantsUtil.BANK_OPERATIONS_SERVICE_WSDL_URL);
-        qName = new QName("http://services.bank.bsr.put.poznan.pl/", "BankOperationServiceService");
+        qName = new QName(ConstantsUtil.NAMESPACE, "BankOperationServiceService");
         service = Service.create(url, qName);
         bankOperationService = service.getPort(BankOperationService.class);
     }
 
+    /**
+     * Gets instance of bank service util
+     * @return instance of bank service util
+     */
     public static BankServiceUtil getInstance() {
         return instance;
     }
 
+    /**
+     * Sets session id after authorization
+     * @param sessionId session id String
+     */
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
 
@@ -65,9 +75,17 @@ public class BankServiceUtil {
         requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
     }
 
+    /**
+     * Informs if user is authorized or not
+     * @return true if user is authorized, false otherwise
+     */
     public boolean isAuthorized() {
         return sessionId != null;
     }
+
+    /*
+    Getter methods for bank service util class
+     */
 
     public UserService getUserService() {
         return userService;

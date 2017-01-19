@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import pl.poznan.put.bsr.bank.front.utils.BankServiceUtil;
 import pl.poznan.put.bsr.bank.front.views.LoginDialogView;
 
+/**
+ * Main application class
+ * @author Kamil Walkowiak
+ */
 public class Main extends Application {
 
     @Override
@@ -33,6 +37,10 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Main application method
+     * @param args run arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

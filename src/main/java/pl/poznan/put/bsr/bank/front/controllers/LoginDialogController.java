@@ -14,6 +14,7 @@ import pl.poznan.put.bsr.bank.services.ValidationException_Exception;
 import java.io.IOException;
 
 /**
+ * Login dialog controller class
  * @author Kamil Walkowiak
  */
 public class LoginDialogController {

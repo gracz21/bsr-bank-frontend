@@ -11,6 +11,7 @@ import pl.poznan.put.bsr.bank.services.BankServiceException_Exception;
 import pl.poznan.put.bsr.bank.services.ValidationException_Exception;
 
 /**
+ * Register new user dialog controller class
  * @author Kamil Walkowiak
  */
 public class RegisterDialogController {
