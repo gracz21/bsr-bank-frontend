@@ -70,7 +70,7 @@
       </GridPane>
       <ButtonBar layoutX="286.0" layoutY="151.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="14.0">
         <buttons>
-            <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButton" text="Register" />
+            <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButton" text="Register" defaultButton="true" />
           <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
         </buttons>
       </ButtonBar>

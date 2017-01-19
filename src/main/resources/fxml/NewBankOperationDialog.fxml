@@ -76,15 +76,6 @@
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </Label>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-        <buttons>
-          <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOkButton" text="OK" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
-        </buttons>
-         <GridPane.margin>
-            <Insets right="5.0" />
-         </GridPane.margin>
-      </ButtonBar>
       <Label fx:id="targetAccountNoLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -95,6 +86,15 @@
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </TextField>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <buttons>
+          <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOkButton" text="OK" defaultButton="true" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+        </buttons>
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </ButtonBar>
    </children>
    <padding>
       <Insets left="5.0" right="5.0" />
