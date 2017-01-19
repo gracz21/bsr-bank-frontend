@@ -13,7 +13,10 @@ import pl.poznan.put.bsr.bank.front.utils.InformationDialogsUtil;
 import pl.poznan.put.bsr.bank.front.views.NewBankOperationDialogView;
 import pl.poznan.put.bsr.bank.services.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +62,8 @@ public class AccountOverviewController {
     private TableColumn<BankOperation, String> targetTableColumn;
     @FXML
     private TableColumn<BankOperation, String> balanceAfterTableColumn;
+    @FXML
+    private TableColumn<BankOperation, String> dateTableColumn;
 
     public AccountOverviewController() {
         fetchCurrentUser();
@@ -153,6 +158,9 @@ public class AccountOverviewController {
     }
 
     private void initializeHistoryTableView() {
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
         typeTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
         titleTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         amountTableColumn.setCellValueFactory(cellData ->
@@ -161,6 +169,15 @@ public class AccountOverviewController {
         targetTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareTarget(cellData.getValue())));
         balanceAfterTableColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.format("%.2f", cellData.getValue().getBalanceAfter()) + " PLN"));
+        dateTableColumn.setCellValueFactory(cellData -> {
+            Date date = null;
+            try {
+               date = parser.parse(cellData.getValue().getTimestamp());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return new SimpleStringProperty(formater.format(date));
+        });
     }
 
     private void updateBankAccountsList() {

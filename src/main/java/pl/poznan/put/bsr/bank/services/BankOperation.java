@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="balanceAfter" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="receiver_account" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="timestamp" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "title",
     "amount",
     "balanceAfter",
-    "receiverAccount"
+    "receiverAccount",
+    "timestamp"
 })
 @XmlSeeAlso({
     Fee.class,
@@ -50,6 +52,7 @@ public abstract class BankOperation {
     protected double balanceAfter;
     @XmlElement(name = "receiver_account")
     protected String receiverAccount;
+    protected String timestamp;
 
     /**
      * Gets the value of the title property.
@@ -129,6 +132,30 @@ public abstract class BankOperation {
      */
     public void setReceiverAccount(String value) {
         this.receiverAccount = value;
+    }
+
+    /**
+     * Gets the value of the timestamp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Sets the value of the timestamp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTimestamp(String value) {
+        this.timestamp = value;
     }
 
 }

@@ -68,9 +68,9 @@ public interface BankAccountService {
     /**
      * 
      * @param accountNo
+     * @throws BankServiceException_Exception
      * @throws ValidationException_Exception
      * @throws AuthException_Exception
-     * @throws BankServiceException_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "deleteBankAccount", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteBankAccount")
