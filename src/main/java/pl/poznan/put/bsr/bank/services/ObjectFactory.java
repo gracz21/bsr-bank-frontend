@@ -24,17 +24,19 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _ValidationException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "ValidationException");
+    private final static QName _LoginResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "loginResponse");
+    private final static QName _LogoutResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "logoutResponse");
+    private final static QName _GetCurrentUser_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUser");
+    private final static QName _Login_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "login");
+    private final static QName _AuthException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "AuthException");
     private final static QName _DeleteCurrentUser_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteCurrentUser");
     private final static QName _RegisterResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "registerResponse");
     private final static QName _DeleteCurrentUserResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteCurrentUserResponse");
     private final static QName _BankServiceException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "BankServiceException");
-    private final static QName _ValidationException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "ValidationException");
-    private final static QName _LoginResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "loginResponse");
-    private final static QName _LogoutResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "logoutResponse");
     private final static QName _Logout_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "logout");
-    private final static QName _Login_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "login");
+    private final static QName _GetCurrentUserResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUserResponse");
     private final static QName _Register_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "register");
-    private final static QName _AuthException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "AuthException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: pl.poznan.put.bsr.bank.services
@@ -44,27 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteCurrentUserResponse }
+     * Create an instance of {@link GetCurrentUser }
      * 
      */
-    public DeleteCurrentUserResponse createDeleteCurrentUserResponse() {
-        return new DeleteCurrentUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link Logout }
-     * 
-     */
-    public Logout createLogout() {
-        return new Logout();
-    }
-
-    /**
-     * Create an instance of {@link BankServiceException }
-     * 
-     */
-    public BankServiceException createBankServiceException() {
-        return new BankServiceException();
+    public GetCurrentUser createGetCurrentUser() {
+        return new GetCurrentUser();
     }
 
     /**
@@ -92,22 +78,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RegisterResponse }
-     * 
-     */
-    public RegisterResponse createRegisterResponse() {
-        return new RegisterResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteCurrentUser }
-     * 
-     */
-    public DeleteCurrentUser createDeleteCurrentUser() {
-        return new DeleteCurrentUser();
-    }
-
-    /**
      * Create an instance of {@link AuthException }
      * 
      */
@@ -124,11 +94,129 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteCurrentUserResponse }
+     * 
+     */
+    public DeleteCurrentUserResponse createDeleteCurrentUserResponse() {
+        return new DeleteCurrentUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link Logout }
+     * 
+     */
+    public Logout createLogout() {
+        return new Logout();
+    }
+
+    /**
+     * Create an instance of {@link BankServiceException }
+     * 
+     */
+    public BankServiceException createBankServiceException() {
+        return new BankServiceException();
+    }
+
+    /**
+     * Create an instance of {@link RegisterResponse }
+     * 
+     */
+    public RegisterResponse createRegisterResponse() {
+        return new RegisterResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCurrentUser }
+     * 
+     */
+    public DeleteCurrentUser createDeleteCurrentUser() {
+        return new DeleteCurrentUser();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrentUserResponse }
+     * 
+     */
+    public GetCurrentUserResponse createGetCurrentUserResponse() {
+        return new GetCurrentUserResponse();
+    }
+
+    /**
      * Create an instance of {@link Register }
      * 
      */
     public Register createRegister() {
         return new Register();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link ObjectId }
+     * 
+     */
+    public ObjectId createObjectId() {
+        return new ObjectId();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidationException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "ValidationException")
+    public JAXBElement<ValidationException> createValidationException(ValidationException value) {
+        return new JAXBElement<ValidationException>(_ValidationException_QNAME, ValidationException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "loginResponse")
+    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
+        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "logoutResponse")
+    public JAXBElement<LogoutResponse> createLogoutResponse(LogoutResponse value) {
+        return new JAXBElement<LogoutResponse>(_LogoutResponse_QNAME, LogoutResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUser")
+    public JAXBElement<GetCurrentUser> createGetCurrentUser(GetCurrentUser value) {
+        return new JAXBElement<GetCurrentUser>(_GetCurrentUser_QNAME, GetCurrentUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "login")
+    public JAXBElement<Login> createLogin(Login value) {
+        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuthException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "AuthException")
+    public JAXBElement<AuthException> createAuthException(AuthException value) {
+        return new JAXBElement<AuthException>(_AuthException_QNAME, AuthException.class, null, value);
     }
 
     /**
@@ -168,33 +256,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ValidationException }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "ValidationException")
-    public JAXBElement<ValidationException> createValidationException(ValidationException value) {
-        return new JAXBElement<ValidationException>(_ValidationException_QNAME, ValidationException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "loginResponse")
-    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
-        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "logoutResponse")
-    public JAXBElement<LogoutResponse> createLogoutResponse(LogoutResponse value) {
-        return new JAXBElement<LogoutResponse>(_LogoutResponse_QNAME, LogoutResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Logout }{@code >}}
      * 
      */
@@ -204,12 +265,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUserResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "login")
-    public JAXBElement<Login> createLogin(Login value) {
-        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUserResponse")
+    public JAXBElement<GetCurrentUserResponse> createGetCurrentUserResponse(GetCurrentUserResponse value) {
+        return new JAXBElement<GetCurrentUserResponse>(_GetCurrentUserResponse_QNAME, GetCurrentUserResponse.class, null, value);
     }
 
     /**
@@ -219,15 +280,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "register")
     public JAXBElement<Register> createRegister(Register value) {
         return new JAXBElement<Register>(_Register_QNAME, Register.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthException }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "AuthException")
-    public JAXBElement<AuthException> createAuthException(AuthException value) {
-        return new JAXBElement<AuthException>(_AuthException_QNAME, AuthException.class, null, value);
     }
 
 }

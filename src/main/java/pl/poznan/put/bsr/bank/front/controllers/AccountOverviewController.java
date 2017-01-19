@@ -22,8 +22,11 @@ import java.util.Optional;
  * @author Kamil Walkowiak
  */
 public class AccountOverviewController {
+    private User currentUser;
     private ObservableList<BankAccount> bankAccounts;
 
+    @FXML
+    private Label loggedAsLabel;
     @FXML
     private Button logoutButton;
     @FXML
@@ -58,6 +61,7 @@ public class AccountOverviewController {
     private TableColumn<BankOperation, String> balanceAfterTableColumn;
 
     public AccountOverviewController() {
+        fetchCurrentUser();
         bankAccounts = new ObservableListWrapper<>(new ArrayList<>());
         updateBankAccountsList();
     }
@@ -66,6 +70,8 @@ public class AccountOverviewController {
     private void initialize() {
         resetAccountDetails();
 
+        loggedAsLabel.setText(
+                loggedAsLabel.getText() + " " + currentUser.getFirstName() + " " + currentUser.getLastName());
         initializeAccountTableView();
         countFeeButton.setDisable(true);
         newOperationButton.setDisable(true);
@@ -122,6 +128,14 @@ public class AccountOverviewController {
         BankOperation newOperation = newBankOperationDialogView.getResult();
         if (newOperation != null) {
             updateAccountDetails(selectedBankAccount, newOperation);
+        }
+    }
+
+    private void fetchCurrentUser() {
+        try {
+            currentUser = BankServiceUtil.getInstance().getUserService().getCurrentUser();
+        } catch (AuthException_Exception e) {
+            InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
     }
 

@@ -56,14 +56,33 @@ public interface UserService {
     /**
      * 
      * @throws AuthException_Exception
+     * @throws BankServiceException_Exception
      */
     @WebMethod
-    @RequestWrapper(localName = "logout", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.Logout")
-    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.LogoutResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/logoutRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/logoutResponse", fault = {
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/logout/Fault/AuthException")
+    @RequestWrapper(localName = "deleteCurrentUser", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteCurrentUser")
+    @ResponseWrapper(localName = "deleteCurrentUserResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteCurrentUserResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUserRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUserResponse", fault = {
+        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUser/Fault/BankServiceException"),
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUser/Fault/AuthException")
     })
-    public void logout()
+    public void deleteCurrentUser()
+        throws AuthException_Exception, BankServiceException_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns pl.poznan.put.bsr.bank.services.User
+     * @throws AuthException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getCurrentUser", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.GetCurrentUser")
+    @ResponseWrapper(localName = "getCurrentUserResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.GetCurrentUserResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/getCurrentUserRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/getCurrentUserResponse", fault = {
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/getCurrentUser/Fault/AuthException")
+    })
+    public User getCurrentUser()
         throws AuthException_Exception
     ;
 
@@ -95,17 +114,15 @@ public interface UserService {
     /**
      * 
      * @throws AuthException_Exception
-     * @throws BankServiceException_Exception
      */
     @WebMethod
-    @RequestWrapper(localName = "deleteCurrentUser", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteCurrentUser")
-    @ResponseWrapper(localName = "deleteCurrentUserResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteCurrentUserResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUserRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUserResponse", fault = {
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUser/Fault/BankServiceException"),
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/deleteCurrentUser/Fault/AuthException")
+    @RequestWrapper(localName = "logout", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.Logout")
+    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.LogoutResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/logoutRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/logoutResponse", fault = {
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/logout/Fault/AuthException")
     })
-    public void deleteCurrentUser()
-        throws AuthException_Exception, BankServiceException_Exception
+    public void logout()
+        throws AuthException_Exception
     ;
 
 }

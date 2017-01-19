@@ -29,6 +29,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button mnemonicParsing="false" onAction="#handleAddBankAccountButton" text="Add bank account" ButtonBar.buttonData="LEFT" />
+            <Label fx:id="loggedAsLabel" text="Logged as" />
             <Button mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" />
             <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout &amp; exit" />
         </buttons>
