@@ -49,13 +49,13 @@ public class AccountOverviewController {
     @FXML
     private TableColumn<BankOperation, String> titleTableColumn;
     @FXML
-    private TableColumn<BankOperation, Double> amountTableColumn;
+    private TableColumn<BankOperation, String> amountTableColumn;
     @FXML
     private TableColumn<BankOperation, String> sourceTableColumn;
     @FXML
     private TableColumn<BankOperation, String> targetTableColumn;
     @FXML
-    private TableColumn<BankOperation, Double> balanceAfterTableColumn;
+    private TableColumn<BankOperation, String> balanceAfterTableColumn;
 
     public AccountOverviewController() {
         bankAccounts = new ObservableListWrapper<>(new ArrayList<>());
@@ -110,13 +110,7 @@ public class AccountOverviewController {
 
     @FXML
     private void handleLogoutButton() {
-        try {
-            BankServiceUtil.getInstance().getUserService().logout();
-            InformationDialogsUtil.showSuccessDialog("Logged out successfully");
-            ((Stage) logoutButton.getScene().getWindow()).close();
-        } catch (AuthException_Exception e) {
-            InformationDialogsUtil.showExceptionDialog(e.getMessage());
-        }
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
 
     @FXML
@@ -147,10 +141,12 @@ public class AccountOverviewController {
     private void initializeHistoryTableView() {
         typeTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
         titleTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        amountTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getAmount()));
+        amountTableColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(String.format("%.2f", cellData.getValue().getAmount()) + " PLN"));
         sourceTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareSource(cellData.getValue())));
         targetTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(prepareTarget(cellData.getValue())));
-        balanceAfterTableColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getBalanceAfter()));
+        balanceAfterTableColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(String.format("%.2f", cellData.getValue().getBalanceAfter()) + " PLN"));
     }
 
     private void updateBankAccountsList() {
@@ -174,7 +170,7 @@ public class AccountOverviewController {
         newOperationButton.setDisable(false);
         nameLabel.setText(bankAccount.getName());
         accountNoLabel.setText(bankAccount.getAccountNo());
-        balanceLabel.setText(bankAccount.getBalance() + " PLN");
+        balanceLabel.setText(String.format("%.2f", bankAccount.getBalance()) + " PLN");
         historyTableView.setItems(FXCollections.observableArrayList(
                 bankAccount.getHistory().getBankOperationOrPaymentOrTransfer()));
     }
