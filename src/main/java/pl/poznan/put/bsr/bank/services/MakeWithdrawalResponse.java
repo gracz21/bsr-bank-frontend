@@ -1,4 +1,3 @@
-
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for makeWithdrawalResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="makeWithdrawalResponse">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "makeWithdrawalResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class MakeWithdrawalResponse {
 
@@ -37,11 +34,9 @@ public class MakeWithdrawalResponse {
 
     /**
      * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BankOperation }
-     *     
+     *
+     * @return possible object is
+     * {@link BankOperation }
      */
     public BankOperation getReturn() {
         return _return;
@@ -49,11 +44,9 @@ public class MakeWithdrawalResponse {
 
     /**
      * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BankOperation }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BankOperation }
      */
     public void setReturn(BankOperation value) {
         this._return = value;

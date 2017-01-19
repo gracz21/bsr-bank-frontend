@@ -1,18 +1,13 @@
-
 package pl.poznan.put.bsr.bank.services;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for bankOperation complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="bankOperation">
  *   &lt;complexContent>
@@ -27,21 +22,19 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "bankOperation", propOrder = {
-    "title",
-    "amount",
-    "balanceAfter",
-    "receiverAccount"
+        "title",
+        "amount",
+        "balanceAfter",
+        "receiverAccount"
 })
 @XmlSeeAlso({
-    Fee.class,
-    Withdrawal.class,
-    Transfer.class,
-    Payment.class
+        Fee.class,
+        Withdrawal.class,
+        Transfer.class,
+        Payment.class
 })
 public abstract class BankOperation {
 
@@ -53,11 +46,9 @@ public abstract class BankOperation {
 
     /**
      * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTitle() {
         return title;
@@ -65,11 +56,9 @@ public abstract class BankOperation {
 
     /**
      * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTitle(String value) {
         this.title = value;
@@ -77,7 +66,6 @@ public abstract class BankOperation {
 
     /**
      * Gets the value of the amount property.
-     * 
      */
     public double getAmount() {
         return amount;
@@ -85,7 +73,6 @@ public abstract class BankOperation {
 
     /**
      * Sets the value of the amount property.
-     * 
      */
     public void setAmount(double value) {
         this.amount = value;
@@ -93,7 +80,6 @@ public abstract class BankOperation {
 
     /**
      * Gets the value of the balanceAfter property.
-     * 
      */
     public double getBalanceAfter() {
         return balanceAfter;
@@ -101,7 +87,6 @@ public abstract class BankOperation {
 
     /**
      * Sets the value of the balanceAfter property.
-     * 
      */
     public void setBalanceAfter(double value) {
         this.balanceAfter = value;
@@ -109,11 +94,9 @@ public abstract class BankOperation {
 
     /**
      * Gets the value of the receiverAccount property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getReceiverAccount() {
         return receiverAccount;
@@ -121,11 +104,9 @@ public abstract class BankOperation {
 
     /**
      * Sets the value of the receiverAccount property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setReceiverAccount(String value) {
         this.receiverAccount = value;

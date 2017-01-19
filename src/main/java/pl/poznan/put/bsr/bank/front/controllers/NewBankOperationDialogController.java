@@ -45,7 +45,7 @@ public class NewBankOperationDialogController {
 
     @FXML
     private void handleOperationTypeComboBox() {
-        switch(operationTypeComboBox.getValue()) {
+        switch (operationTypeComboBox.getValue()) {
             case "Payment":
                 sourceAccountNoLabel.setText("N/A");
                 targetAccountNoLabel.setVisible(true);
@@ -84,11 +84,7 @@ public class NewBankOperationDialogController {
                     break;
                 case "Transfer":
                     String targetAccountNo = targetAccountNoTextField.getText();
-                    try {
                         resultBankOperation = bankOperationService.makeTransfer(title, amount, selectedBankAccountNo, targetAccountNo);
-                    } catch (IOException_Exception e) {
-                        e.printStackTrace();
-                    }
                     break;
             }
 

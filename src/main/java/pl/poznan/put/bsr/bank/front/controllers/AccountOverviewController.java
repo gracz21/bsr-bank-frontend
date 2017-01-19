@@ -83,7 +83,7 @@ public class AccountOverviewController {
         String name = result.get();
         try {
             bankAccounts.add(BankServiceUtil.getInstance().getBankAccountService().addBankAccount(name));
-        } catch (AuthException_Exception | BankServiceException_Exception | ValidationException_Exception e) {
+        } catch (AuthException_Exception | ValidationException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
     }
@@ -113,7 +113,7 @@ public class AccountOverviewController {
         try {
             BankServiceUtil.getInstance().getUserService().logout();
             InformationDialogsUtil.showSuccessDialog("Logged out successfully");
-            ((Stage)logoutButton.getScene().getWindow()).close();
+            ((Stage) logoutButton.getScene().getWindow()).close();
         } catch (AuthException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
@@ -126,7 +126,7 @@ public class AccountOverviewController {
         newBankOperationDialogView.showAndWait();
 
         BankOperation newOperation = newBankOperationDialogView.getResult();
-        if(newOperation != null) {
+        if (newOperation != null) {
             updateAccountDetails(selectedBankAccount, newOperation);
         }
     }
@@ -138,7 +138,7 @@ public class AccountOverviewController {
         accountsTableView.setItems(bankAccounts);
         accountsTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if(newValue != null) {
+                    if (newValue != null) {
                         showAccountDetails(newValue);
                     }
                 });
@@ -157,7 +157,7 @@ public class AccountOverviewController {
         try {
             List<BankAccount> response = BankServiceUtil.getInstance().getBankAccountService().getCurrentUserBankAccounts();
             bankAccounts.setAll(response);
-        } catch (AuthException_Exception | BankServiceException_Exception e) {
+        } catch (AuthException_Exception e) {
             InformationDialogsUtil.showExceptionDialog(e.getMessage());
         }
     }
@@ -188,7 +188,7 @@ public class AccountOverviewController {
 
     private String prepareSource(BankOperation bankOperation) {
         String source = null;
-        switch(bankOperation.getClass().getSimpleName()) {
+        switch (bankOperation.getClass().getSimpleName()) {
             case "Payment":
                 source = "N/A";
                 break;
@@ -196,7 +196,7 @@ public class AccountOverviewController {
                 source = bankOperation.getReceiverAccount();
                 break;
             case "Transfer":
-                source = ((Transfer)bankOperation).getSenderAccount();
+                source = ((Transfer) bankOperation).getSenderAccount();
                 break;
             case "Fee":
                 source = bankOperation.getReceiverAccount();
@@ -208,7 +208,7 @@ public class AccountOverviewController {
 
     private String prepareTarget(BankOperation bankOperation) {
         String target = null;
-        switch(bankOperation.getClass().getSimpleName()) {
+        switch (bankOperation.getClass().getSimpleName()) {
             case "Payment":
                 target = bankOperation.getReceiverAccount();
                 break;

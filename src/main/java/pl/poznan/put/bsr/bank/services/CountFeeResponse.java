@@ -1,4 +1,3 @@
-
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for countFeeResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="countFeeResponse">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "countFeeResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class CountFeeResponse {
 
@@ -37,11 +34,9 @@ public class CountFeeResponse {
 
     /**
      * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BankOperation }
-     *     
+     *
+     * @return possible object is
+     * {@link BankOperation }
      */
     public BankOperation getReturn() {
         return _return;
@@ -49,11 +44,9 @@ public class CountFeeResponse {
 
     /**
      * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BankOperation }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BankOperation }
      */
     public void setReturn(BankOperation value) {
         this._return = value;

@@ -1,4 +1,3 @@
-
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for deleteBankAccount complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="deleteBankAccount">
  *   &lt;complexContent>
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "deleteBankAccount", propOrder = {
-    "accountNo"
+        "accountNo"
 })
 public class DeleteBankAccount {
 
@@ -37,11 +34,9 @@ public class DeleteBankAccount {
 
     /**
      * Gets the value of the accountNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getAccountNo() {
         return accountNo;
@@ -49,11 +44,9 @@ public class DeleteBankAccount {
 
     /**
      * Sets the value of the accountNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setAccountNo(String value) {
         this.accountNo = value;

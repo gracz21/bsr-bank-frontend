@@ -55,13 +55,13 @@ public class BankServiceUtil {
         Map<String, List<String>> headers = new HashMap<>();
         headers.put("Session-Id", Collections.singletonList(sessionId));
 
-        Map<String, Object> requestContext = ((BindingProvider)userService).getRequestContext();
+        Map<String, Object> requestContext = ((BindingProvider) userService).getRequestContext();
         requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 
-        requestContext = ((BindingProvider)bankAccountService).getRequestContext();
+        requestContext = ((BindingProvider) bankAccountService).getRequestContext();
         requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 
-        requestContext = ((BindingProvider)bankOperationService).getRequestContext();
+        requestContext = ((BindingProvider) bankOperationService).getRequestContext();
         requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
     }
 

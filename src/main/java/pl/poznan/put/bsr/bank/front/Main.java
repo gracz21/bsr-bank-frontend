@@ -11,13 +11,13 @@ import pl.poznan.put.bsr.bank.front.views.LoginDialogView;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         BankServiceUtil.getInstance().initialize();
 
         LoginDialogView loginDialog = new LoginDialogView();
         loginDialog.showAndWait();
 
-        if(BankServiceUtil.getInstance().isAuthorized()) {
+        if (BankServiceUtil.getInstance().isAuthorized()) {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/AccountOverview.fxml"));
             primaryStage.setTitle("e-Bank");
             primaryStage.setScene(new Scene(root));
@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         BankServiceUtil bankServiceUtil = BankServiceUtil.getInstance();
-        if(bankServiceUtil.isAuthorized()) {
+        if (bankServiceUtil.isAuthorized()) {
             bankServiceUtil.getUserService().logout();
         }
     }
