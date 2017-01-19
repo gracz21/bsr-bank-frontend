@@ -31,31 +31,29 @@ public interface BankAccountService {
      * @param name
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankAccount
-     * @throws AuthException_Exception
-     * @throws BankServiceException_Exception
      * @throws ValidationException_Exception
+     * @throws AuthException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "addBankAccount", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.AddBankAccount")
     @ResponseWrapper(localName = "addBankAccountResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.AddBankAccountResponse")
     @Action(input = "http://services.bank.bsr.put.poznan.pl/BankAccountService/addBankAccountRequest", output = "http://services.bank.bsr.put.poznan.pl/BankAccountService/addBankAccountResponse", fault = {
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankAccountService/addBankAccount/Fault/BankServiceException"),
         @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankAccountService/addBankAccount/Fault/AuthException"),
         @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankAccountService/addBankAccount/Fault/ValidationException")
     })
     public BankAccount addBankAccount(
         @WebParam(name = "name", targetNamespace = "")
         String name)
-        throws AuthException_Exception, BankServiceException_Exception, ValidationException_Exception
+        throws AuthException_Exception, ValidationException_Exception
     ;
 
     /**
      * 
      * @param accountNo
+     * @throws ValidationException_Exception
      * @throws AuthException_Exception
      * @throws BankServiceException_Exception
-     * @throws ValidationException_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "deleteBankAccount", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.DeleteBankAccount")
@@ -76,18 +74,16 @@ public interface BankAccountService {
      * @return
      *     returns java.util.List<pl.poznan.put.bsr.bank.services.BankAccount>
      * @throws AuthException_Exception
-     * @throws BankServiceException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getCurrentUserBankAccounts", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.GetCurrentUserBankAccounts")
     @ResponseWrapper(localName = "getCurrentUserBankAccountsResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.GetCurrentUserBankAccountsResponse")
     @Action(input = "http://services.bank.bsr.put.poznan.pl/BankAccountService/getCurrentUserBankAccountsRequest", output = "http://services.bank.bsr.put.poznan.pl/BankAccountService/getCurrentUserBankAccountsResponse", fault = {
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankAccountService/getCurrentUserBankAccounts/Fault/BankServiceException"),
         @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankAccountService/getCurrentUserBankAccounts/Fault/AuthException")
     })
     public List<BankAccount> getCurrentUserBankAccounts()
-        throws AuthException_Exception, BankServiceException_Exception
+        throws AuthException_Exception
     ;
 
 }
