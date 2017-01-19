@@ -163,7 +163,7 @@ public class AccountOverviewController {
 
     private void initializeHistoryTableView() {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
-        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
         typeTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
         titleTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
@@ -180,7 +180,7 @@ public class AccountOverviewController {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return new SimpleStringProperty(formater.format(date));
+            return new SimpleStringProperty(formatter.format(date));
         });
     }
 
@@ -211,7 +211,7 @@ public class AccountOverviewController {
     }
 
     private void updateAccountDetails(BankAccount bankAccount, BankOperation bankOperation) {
-        balanceLabel.setText(bankOperation.getBalanceAfter() + " PLN");
+        balanceLabel.setText(String.format("%.2f", bankOperation.getBalanceAfter()) + " PLN");
         historyTableView.getItems().add(bankOperation);
         bankAccount.setBalance(bankOperation.getBalanceAfter());
         bankAccount.getHistory().getBankOperationOrPaymentOrTransfer().add(bankOperation);
