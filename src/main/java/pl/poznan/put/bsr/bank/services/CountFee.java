@@ -1,3 +1,4 @@
+
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for countFee complex type.
- * <p>
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * 
  * <pre>
  * &lt;complexType name="countFee">
  *   &lt;complexContent>
@@ -22,10 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "countFee", propOrder = {
-        "targetAccountNo"
+    "targetAccountNo"
 })
 public class CountFee {
 
@@ -34,9 +37,11 @@ public class CountFee {
 
     /**
      * Gets the value of the targetAccountNo property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTargetAccountNo() {
         return targetAccountNo;
@@ -44,9 +49,11 @@ public class CountFee {
 
     /**
      * Sets the value of the targetAccountNo property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTargetAccountNo(String value) {
         this.targetAccountNo = value;

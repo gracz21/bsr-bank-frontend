@@ -1,3 +1,4 @@
+
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for login complex type.
- * <p>
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * 
  * <pre>
  * &lt;complexType name="login">
  *   &lt;complexContent>
@@ -23,11 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "login", propOrder = {
-        "userName",
-        "password"
+    "userName",
+    "password"
 })
 public class Login {
 
@@ -38,9 +41,11 @@ public class Login {
 
     /**
      * Gets the value of the userName property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getUserName() {
         return userName;
@@ -48,9 +53,11 @@ public class Login {
 
     /**
      * Sets the value of the userName property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setUserName(String value) {
         this.userName = value;
@@ -58,9 +65,11 @@ public class Login {
 
     /**
      * Gets the value of the password property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPassword() {
         return password;
@@ -68,9 +77,11 @@ public class Login {
 
     /**
      * Sets the value of the password property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPassword(String value) {
         this.password = value;

@@ -1,3 +1,4 @@
+
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for makePayment complex type.
- * <p>
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * 
  * <pre>
  * &lt;complexType name="makePayment">
  *   &lt;complexContent>
@@ -24,12 +25,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "makePayment", propOrder = {
-        "title",
-        "amount",
-        "targetAccountNo"
+    "title",
+    "amount",
+    "targetAccountNo"
 })
 public class MakePayment {
 
@@ -42,9 +45,11 @@ public class MakePayment {
 
     /**
      * Gets the value of the title property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTitle() {
         return title;
@@ -52,9 +57,11 @@ public class MakePayment {
 
     /**
      * Sets the value of the title property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTitle(String value) {
         this.title = value;
@@ -62,9 +69,11 @@ public class MakePayment {
 
     /**
      * Gets the value of the amount property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getAmount() {
         return amount;
@@ -72,9 +81,11 @@ public class MakePayment {
 
     /**
      * Sets the value of the amount property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setAmount(String value) {
         this.amount = value;
@@ -82,9 +93,11 @@ public class MakePayment {
 
     /**
      * Gets the value of the targetAccountNo property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTargetAccountNo() {
         return targetAccountNo;
@@ -92,9 +105,11 @@ public class MakePayment {
 
     /**
      * Sets the value of the targetAccountNo property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTargetAccountNo(String value) {
         this.targetAccountNo = value;

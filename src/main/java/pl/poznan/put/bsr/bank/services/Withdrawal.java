@@ -1,3 +1,4 @@
+
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for withdrawal complex type.
- * <p>
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * 
  * <pre>
  * &lt;complexType name="withdrawal">
  *   &lt;complexContent>
@@ -20,11 +21,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "withdrawal")
 public class Withdrawal
-        extends BankOperation {
+    extends BankOperation
+{
 
 
 }

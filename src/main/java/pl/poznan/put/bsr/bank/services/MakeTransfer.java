@@ -1,3 +1,4 @@
+
 package pl.poznan.put.bsr.bank.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for makeTransfer complex type.
- * <p>
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * 
  * <pre>
  * &lt;complexType name="makeTransfer">
  *   &lt;complexContent>
@@ -25,13 +26,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "makeTransfer", propOrder = {
-        "title",
-        "amount",
-        "sourceAccountNo",
-        "targetAccountNo"
+    "title",
+    "amount",
+    "sourceAccountNo",
+    "targetAccountNo"
 })
 public class MakeTransfer {
 
@@ -46,9 +49,11 @@ public class MakeTransfer {
 
     /**
      * Gets the value of the title property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTitle() {
         return title;
@@ -56,9 +61,11 @@ public class MakeTransfer {
 
     /**
      * Sets the value of the title property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTitle(String value) {
         this.title = value;
@@ -66,9 +73,11 @@ public class MakeTransfer {
 
     /**
      * Gets the value of the amount property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getAmount() {
         return amount;
@@ -76,9 +85,11 @@ public class MakeTransfer {
 
     /**
      * Sets the value of the amount property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setAmount(String value) {
         this.amount = value;
@@ -86,9 +97,11 @@ public class MakeTransfer {
 
     /**
      * Gets the value of the sourceAccountNo property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getSourceAccountNo() {
         return sourceAccountNo;
@@ -96,9 +109,11 @@ public class MakeTransfer {
 
     /**
      * Sets the value of the sourceAccountNo property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setSourceAccountNo(String value) {
         this.sourceAccountNo = value;
@@ -106,9 +121,11 @@ public class MakeTransfer {
 
     /**
      * Gets the value of the targetAccountNo property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTargetAccountNo() {
         return targetAccountNo;
@@ -116,9 +133,11 @@ public class MakeTransfer {
 
     /**
      * Sets the value of the targetAccountNo property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTargetAccountNo(String value) {
         this.targetAccountNo = value;
