@@ -24,19 +24,20 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Fee_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "fee");
     private final static QName _ValidationException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "ValidationException");
-    private final static QName _LoginResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "loginResponse");
-    private final static QName _LogoutResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "logoutResponse");
-    private final static QName _GetCurrentUser_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUser");
-    private final static QName _Login_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "login");
+    private final static QName _DeleteBankAccount_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteBankAccount");
     private final static QName _AuthException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "AuthException");
-    private final static QName _DeleteCurrentUser_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteCurrentUser");
-    private final static QName _RegisterResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "registerResponse");
-    private final static QName _DeleteCurrentUserResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteCurrentUserResponse");
+    private final static QName _AddBankAccount_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "addBankAccount");
+    private final static QName _Withdrawal_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "withdrawal");
+    private final static QName _BankOperation_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "bankOperation");
+    private final static QName _DeleteBankAccountResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "deleteBankAccountResponse");
+    private final static QName _AddBankAccountResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "addBankAccountResponse");
     private final static QName _BankServiceException_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "BankServiceException");
-    private final static QName _Logout_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "logout");
-    private final static QName _GetCurrentUserResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUserResponse");
-    private final static QName _Register_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "register");
+    private final static QName _Transfer_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "transfer");
+    private final static QName _GetCurrentUserBankAccountsResponse_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUserBankAccountsResponse");
+    private final static QName _GetCurrentUserBankAccounts_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "getCurrentUserBankAccounts");
+    private final static QName _Payment_QNAME = new QName("http://services.bank.bsr.put.poznan.pl/", "payment");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: pl.poznan.put.bsr.bank.services
@@ -46,11 +47,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCurrentUser }
+     * Create an instance of {@link BankAccount }
      * 
      */
-    public GetCurrentUser createGetCurrentUser() {
-        return new GetCurrentUser();
+    public BankAccount createBankAccount() {
+        return new BankAccount();
     }
 
     /**
@@ -62,19 +63,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LoginResponse }
+     * Create an instance of {@link Fee }
      * 
      */
-    public LoginResponse createLoginResponse() {
-        return new LoginResponse();
+    public Fee createFee() {
+        return new Fee();
     }
 
     /**
-     * Create an instance of {@link LogoutResponse }
+     * Create an instance of {@link AddBankAccount }
      * 
      */
-    public LogoutResponse createLogoutResponse() {
-        return new LogoutResponse();
+    public AddBankAccount createAddBankAccount() {
+        return new AddBankAccount();
     }
 
     /**
@@ -86,27 +87,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Login }
+     * Create an instance of {@link Withdrawal }
      * 
      */
-    public Login createLogin() {
-        return new Login();
+    public Withdrawal createWithdrawal() {
+        return new Withdrawal();
     }
 
     /**
-     * Create an instance of {@link DeleteCurrentUserResponse }
+     * Create an instance of {@link DeleteBankAccount }
      * 
      */
-    public DeleteCurrentUserResponse createDeleteCurrentUserResponse() {
-        return new DeleteCurrentUserResponse();
+    public DeleteBankAccount createDeleteBankAccount() {
+        return new DeleteBankAccount();
     }
 
     /**
-     * Create an instance of {@link Logout }
+     * Create an instance of {@link AddBankAccountResponse }
      * 
      */
-    public Logout createLogout() {
-        return new Logout();
+    public AddBankAccountResponse createAddBankAccountResponse() {
+        return new AddBankAccountResponse();
     }
 
     /**
@@ -118,43 +119,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RegisterResponse }
+     * Create an instance of {@link Transfer }
      * 
      */
-    public RegisterResponse createRegisterResponse() {
-        return new RegisterResponse();
+    public Transfer createTransfer() {
+        return new Transfer();
     }
 
     /**
-     * Create an instance of {@link DeleteCurrentUser }
+     * Create an instance of {@link DeleteBankAccountResponse }
      * 
      */
-    public DeleteCurrentUser createDeleteCurrentUser() {
-        return new DeleteCurrentUser();
+    public DeleteBankAccountResponse createDeleteBankAccountResponse() {
+        return new DeleteBankAccountResponse();
     }
 
     /**
-     * Create an instance of {@link GetCurrentUserResponse }
+     * Create an instance of {@link GetCurrentUserBankAccountsResponse }
      * 
      */
-    public GetCurrentUserResponse createGetCurrentUserResponse() {
-        return new GetCurrentUserResponse();
+    public GetCurrentUserBankAccountsResponse createGetCurrentUserBankAccountsResponse() {
+        return new GetCurrentUserBankAccountsResponse();
     }
 
     /**
-     * Create an instance of {@link Register }
+     * Create an instance of {@link GetCurrentUserBankAccounts }
      * 
      */
-    public Register createRegister() {
-        return new Register();
+    public GetCurrentUserBankAccounts createGetCurrentUserBankAccounts() {
+        return new GetCurrentUserBankAccounts();
     }
 
     /**
-     * Create an instance of {@link User }
+     * Create an instance of {@link Payment }
      * 
      */
-    public User createUser() {
-        return new User();
+    public Payment createPayment() {
+        return new Payment();
     }
 
     /**
@@ -163,6 +164,23 @@ public class ObjectFactory {
      */
     public ObjectId createObjectId() {
         return new ObjectId();
+    }
+
+    /**
+     * Create an instance of {@link BankAccount.History }
+     * 
+     */
+    public BankAccount.History createBankAccountHistory() {
+        return new BankAccount.History();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Fee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "fee")
+    public JAXBElement<Fee> createFee(Fee value) {
+        return new JAXBElement<Fee>(_Fee_QNAME, Fee.class, null, value);
     }
 
     /**
@@ -175,39 +193,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteBankAccount }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "loginResponse")
-    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
-        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "logoutResponse")
-    public JAXBElement<LogoutResponse> createLogoutResponse(LogoutResponse value) {
-        return new JAXBElement<LogoutResponse>(_LogoutResponse_QNAME, LogoutResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUser }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUser")
-    public JAXBElement<GetCurrentUser> createGetCurrentUser(GetCurrentUser value) {
-        return new JAXBElement<GetCurrentUser>(_GetCurrentUser_QNAME, GetCurrentUser.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "login")
-    public JAXBElement<Login> createLogin(Login value) {
-        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "deleteBankAccount")
+    public JAXBElement<DeleteBankAccount> createDeleteBankAccount(DeleteBankAccount value) {
+        return new JAXBElement<DeleteBankAccount>(_DeleteBankAccount_QNAME, DeleteBankAccount.class, null, value);
     }
 
     /**
@@ -220,30 +211,48 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteCurrentUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddBankAccount }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "deleteCurrentUser")
-    public JAXBElement<DeleteCurrentUser> createDeleteCurrentUser(DeleteCurrentUser value) {
-        return new JAXBElement<DeleteCurrentUser>(_DeleteCurrentUser_QNAME, DeleteCurrentUser.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "addBankAccount")
+    public JAXBElement<AddBankAccount> createAddBankAccount(AddBankAccount value) {
+        return new JAXBElement<AddBankAccount>(_AddBankAccount_QNAME, AddBankAccount.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegisterResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Withdrawal }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "registerResponse")
-    public JAXBElement<RegisterResponse> createRegisterResponse(RegisterResponse value) {
-        return new JAXBElement<RegisterResponse>(_RegisterResponse_QNAME, RegisterResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "withdrawal")
+    public JAXBElement<Withdrawal> createWithdrawal(Withdrawal value) {
+        return new JAXBElement<Withdrawal>(_Withdrawal_QNAME, Withdrawal.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteCurrentUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BankOperation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "deleteCurrentUserResponse")
-    public JAXBElement<DeleteCurrentUserResponse> createDeleteCurrentUserResponse(DeleteCurrentUserResponse value) {
-        return new JAXBElement<DeleteCurrentUserResponse>(_DeleteCurrentUserResponse_QNAME, DeleteCurrentUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "bankOperation")
+    public JAXBElement<BankOperation> createBankOperation(BankOperation value) {
+        return new JAXBElement<BankOperation>(_BankOperation_QNAME, BankOperation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteBankAccountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "deleteBankAccountResponse")
+    public JAXBElement<DeleteBankAccountResponse> createDeleteBankAccountResponse(DeleteBankAccountResponse value) {
+        return new JAXBElement<DeleteBankAccountResponse>(_DeleteBankAccountResponse_QNAME, DeleteBankAccountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddBankAccountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "addBankAccountResponse")
+    public JAXBElement<AddBankAccountResponse> createAddBankAccountResponse(AddBankAccountResponse value) {
+        return new JAXBElement<AddBankAccountResponse>(_AddBankAccountResponse_QNAME, AddBankAccountResponse.class, null, value);
     }
 
     /**
@@ -256,30 +265,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Logout }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Transfer }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "logout")
-    public JAXBElement<Logout> createLogout(Logout value) {
-        return new JAXBElement<Logout>(_Logout_QNAME, Logout.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "transfer")
+    public JAXBElement<Transfer> createTransfer(Transfer value) {
+        return new JAXBElement<Transfer>(_Transfer_QNAME, Transfer.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUserBankAccountsResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUserResponse")
-    public JAXBElement<GetCurrentUserResponse> createGetCurrentUserResponse(GetCurrentUserResponse value) {
-        return new JAXBElement<GetCurrentUserResponse>(_GetCurrentUserResponse_QNAME, GetCurrentUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUserBankAccountsResponse")
+    public JAXBElement<GetCurrentUserBankAccountsResponse> createGetCurrentUserBankAccountsResponse(GetCurrentUserBankAccountsResponse value) {
+        return new JAXBElement<GetCurrentUserBankAccountsResponse>(_GetCurrentUserBankAccountsResponse_QNAME, GetCurrentUserBankAccountsResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Register }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentUserBankAccounts }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "register")
-    public JAXBElement<Register> createRegister(Register value) {
-        return new JAXBElement<Register>(_Register_QNAME, Register.class, null, value);
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "getCurrentUserBankAccounts")
+    public JAXBElement<GetCurrentUserBankAccounts> createGetCurrentUserBankAccounts(GetCurrentUserBankAccounts value) {
+        return new JAXBElement<GetCurrentUserBankAccounts>(_GetCurrentUserBankAccounts_QNAME, GetCurrentUserBankAccounts.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Payment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.bank.bsr.put.poznan.pl/", name = "payment")
+    public JAXBElement<Payment> createPayment(Payment value) {
+        return new JAXBElement<Payment>(_Payment_QNAME, Payment.class, null, value);
     }
 
 }

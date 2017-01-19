@@ -62,9 +62,7 @@ public interface BankOperationService {
 
     /**
      * 
-     * @param amount
      * @param targetAccountNo
-     * @param title
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankOperation
      * @throws BankServiceException_Exception
@@ -74,19 +72,15 @@ public interface BankOperationService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "makeWithdrawal", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeWithdrawal")
-    @ResponseWrapper(localName = "makeWithdrawalResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeWithdrawalResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawalRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawalResponse", fault = {
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/BankServiceException"),
-        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/BankOperationException"),
-        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/ValidationException"),
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/AuthException")
+    @RequestWrapper(localName = "countFee", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.CountFee")
+    @ResponseWrapper(localName = "countFeeResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.CountFeeResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFeeRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFeeResponse", fault = {
+        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/ValidationException"),
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/AuthException"),
+        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/BankServiceException"),
+        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/BankOperationException")
     })
-    public BankOperation makeWithdrawal(
-        @WebParam(name = "title", targetNamespace = "")
-        String title,
-        @WebParam(name = "amount", targetNamespace = "")
-        String amount,
+    public BankOperation countFee(
         @WebParam(name = "targetAccountNo", targetNamespace = "")
         String targetAccountNo)
         throws AuthException_Exception, BankOperationException_Exception, BankServiceException_Exception, ValidationException_Exception
@@ -126,7 +120,9 @@ public interface BankOperationService {
 
     /**
      * 
+     * @param amount
      * @param targetAccountNo
+     * @param title
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankOperation
      * @throws BankServiceException_Exception
@@ -136,15 +132,19 @@ public interface BankOperationService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "countFee", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.CountFee")
-    @ResponseWrapper(localName = "countFeeResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.CountFeeResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFeeRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFeeResponse", fault = {
-        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/ValidationException"),
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/AuthException"),
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/BankServiceException"),
-        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/countFee/Fault/BankOperationException")
+    @RequestWrapper(localName = "makeWithdrawal", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeWithdrawal")
+    @ResponseWrapper(localName = "makeWithdrawalResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeWithdrawalResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawalRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawalResponse", fault = {
+        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/BankServiceException"),
+        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/BankOperationException"),
+        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/ValidationException"),
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeWithdrawal/Fault/AuthException")
     })
-    public BankOperation countFee(
+    public BankOperation makeWithdrawal(
+        @WebParam(name = "title", targetNamespace = "")
+        String title,
+        @WebParam(name = "amount", targetNamespace = "")
+        String amount,
         @WebParam(name = "targetAccountNo", targetNamespace = "")
         String targetAccountNo)
         throws AuthException_Exception, BankOperationException_Exception, BankServiceException_Exception, ValidationException_Exception

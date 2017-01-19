@@ -72,6 +72,20 @@ public interface UserService {
 
     /**
      * 
+     * @throws AuthException_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "logout", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.Logout")
+    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.LogoutResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/logoutRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/logoutResponse", fault = {
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/logout/Fault/AuthException")
+    })
+    public void logout()
+        throws AuthException_Exception
+    ;
+
+    /**
+     * 
      * @param password
      * @param userName
      * @return
@@ -93,20 +107,6 @@ public interface UserService {
         @WebParam(name = "password", targetNamespace = "")
         String password)
         throws BankServiceException_Exception, ValidationException_Exception
-    ;
-
-    /**
-     * 
-     * @throws AuthException_Exception
-     */
-    @WebMethod
-    @RequestWrapper(localName = "logout", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.Logout")
-    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.LogoutResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/UserService/logoutRequest", output = "http://services.bank.bsr.put.poznan.pl/UserService/logoutResponse", fault = {
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/UserService/logout/Fault/AuthException")
-    })
-    public void logout()
-        throws AuthException_Exception
     ;
 
     /**
