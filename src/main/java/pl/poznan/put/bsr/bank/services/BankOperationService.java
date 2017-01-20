@@ -27,48 +27,13 @@ public interface BankOperationService {
 
     /**
      * 
-     * @param amount
-     * @param targetAccountNo
-     * @param title
-     * @param sourceAccountNo
-     * @return
-     *     returns pl.poznan.put.bsr.bank.services.BankOperation
-     * @throws BankServiceException_Exception
-     * @throws AuthException_Exception
-     * @throws BankOperationException_Exception
-     * @throws ValidationException_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "makeTransfer", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeTransfer")
-    @ResponseWrapper(localName = "makeTransferResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeTransferResponse")
-    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransferRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransferResponse", fault = {
-        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/BankServiceException"),
-        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/BankOperationException"),
-        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/ValidationException"),
-        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/AuthException")
-    })
-    public BankOperation makeTransfer(
-        @WebParam(name = "title", targetNamespace = "")
-        String title,
-        @WebParam(name = "amount", targetNamespace = "")
-        String amount,
-        @WebParam(name = "sourceAccountNo", targetNamespace = "")
-        String sourceAccountNo,
-        @WebParam(name = "targetAccountNo", targetNamespace = "")
-        String targetAccountNo)
-        throws AuthException_Exception, BankOperationException_Exception, BankServiceException_Exception, ValidationException_Exception
-    ;
-
-    /**
-     * 
      * @param targetAccountNo
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankOperation
-     * @throws BankServiceException_Exception
-     * @throws AuthException_Exception
-     * @throws BankOperationException_Exception
      * @throws ValidationException_Exception
+     * @throws BankOperationException_Exception
+     * @throws AuthException_Exception
+     * @throws BankServiceException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -93,10 +58,10 @@ public interface BankOperationService {
      * @param title
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankOperation
-     * @throws BankServiceException_Exception
-     * @throws AuthException_Exception
-     * @throws BankOperationException_Exception
      * @throws ValidationException_Exception
+     * @throws BankOperationException_Exception
+     * @throws AuthException_Exception
+     * @throws BankServiceException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -125,10 +90,10 @@ public interface BankOperationService {
      * @param title
      * @return
      *     returns pl.poznan.put.bsr.bank.services.BankOperation
-     * @throws BankServiceException_Exception
-     * @throws AuthException_Exception
-     * @throws BankOperationException_Exception
      * @throws ValidationException_Exception
+     * @throws BankOperationException_Exception
+     * @throws AuthException_Exception
+     * @throws BankServiceException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -145,6 +110,41 @@ public interface BankOperationService {
         String title,
         @WebParam(name = "amount", targetNamespace = "")
         String amount,
+        @WebParam(name = "targetAccountNo", targetNamespace = "")
+        String targetAccountNo)
+        throws AuthException_Exception, BankOperationException_Exception, BankServiceException_Exception, ValidationException_Exception
+    ;
+
+    /**
+     * 
+     * @param amount
+     * @param targetAccountNo
+     * @param title
+     * @param sourceAccountNo
+     * @return
+     *     returns pl.poznan.put.bsr.bank.services.BankOperation
+     * @throws ValidationException_Exception
+     * @throws BankOperationException_Exception
+     * @throws AuthException_Exception
+     * @throws BankServiceException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "makeTransfer", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeTransfer")
+    @ResponseWrapper(localName = "makeTransferResponse", targetNamespace = "http://services.bank.bsr.put.poznan.pl/", className = "pl.poznan.put.bsr.bank.services.MakeTransferResponse")
+    @Action(input = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransferRequest", output = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransferResponse", fault = {
+        @FaultAction(className = BankServiceException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/BankServiceException"),
+        @FaultAction(className = BankOperationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/BankOperationException"),
+        @FaultAction(className = ValidationException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/ValidationException"),
+        @FaultAction(className = AuthException_Exception.class, value = "http://services.bank.bsr.put.poznan.pl/BankOperationService/makeTransfer/Fault/AuthException")
+    })
+    public BankOperation makeTransfer(
+        @WebParam(name = "title", targetNamespace = "")
+        String title,
+        @WebParam(name = "amount", targetNamespace = "")
+        String amount,
+        @WebParam(name = "sourceAccountNo", targetNamespace = "")
+        String sourceAccountNo,
         @WebParam(name = "targetAccountNo", targetNamespace = "")
         String targetAccountNo)
         throws AuthException_Exception, BankOperationException_Exception, BankServiceException_Exception, ValidationException_Exception
